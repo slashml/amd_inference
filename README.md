@@ -2,7 +2,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202-green.svg)](https://github.com/bentoml/OpenLLM/blob/main/LICENSE)
 [![X](https://badgen.net/badge/icon/@slash_ml/000000?icon=twitter&label=Follow)](https://twitter.com/slash_ml)
-[![Community](https://img.shields.io/discord/123456789012345678?logo=discord&label=Join%20Discord)](https://discord.gg/KyUYq8uX)
+[![Community](https://img.shields.io/discord/123456789012345678?logo=discord&label=Join%20Discord)](https://discord.com/invite/EXJkWygF)
 
 
 This project provides a Docker-based inference engine for running Large Language Models (LLMs) on AMD GPUs. It's designed to work with models from Hugging Face, with a focus on the LLaMA model family.
