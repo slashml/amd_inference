@@ -34,20 +34,14 @@ amd-gpu-inference/
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/amd-gpu-inference.git
+   git clone https://github.com/slashml/amd-gpu-inference.git
    cd amd-gpu-inference
    ```
 
-2. Make the run script executable:
-   ```
-   chmod +x run-docker-amd.sh
-   ```
-
-3. Run the inference engine with a specified model and prompt:
+2. Run the inference engine with a specified model and prompt:
    ```
    ./run-docker-amd.sh "meta-llama/Llama-2-7b-chat-hf" "Translate the following English text to French: 'Hello, how are you?'"
    ```
-
    Replace `"meta-llama/Llama-2-7b-chat-hf"` with the Hugging Face model you want to use, and provide your own prompt.
 
 ## Detailed Usage
