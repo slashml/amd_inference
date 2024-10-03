@@ -38,7 +38,12 @@ amd-gpu-inference/
    cd amd-gpu-inference
    ```
 
-2. Run the inference engine with a specified model and prompt:
+2. Make the run script executable:
+   ```
+   chmod +x run-docker-amd.sh
+   ```
+
+3. Run the inference engine with a specified model and prompt:
    ```
    ./run-docker-amd.sh "meta-llama/Llama-2-7b-chat-hf" "Translate the following English text to French: 'Hello, how are you?'"
    ```
