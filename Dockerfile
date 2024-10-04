@@ -7,6 +7,11 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+
+# Install rocm-smi
+RUN apt-get update && apt-get install -y rocm-smi
+
+
 # Set up a new user
 RUN useradd -m -s /bin/bash user
 USER user
@@ -17,15 +22,6 @@ ENV PATH="/home/user/.local/bin:${PATH}"
 RUN python3 -m pip install --user --upgrade pip
 
 COPY --chown=user:user requirements.txt .
-
-# Switch to root user
-USER root
-
-# Install rocm-smi
-RUN apt-get update && apt-get install -y rocm-smi
-
-# Switch back to the non-root user
-USER user
 
 
 RUN pip install --user --no-cache-dir -r requirements.txt
