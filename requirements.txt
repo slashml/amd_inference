@@ -16,4 +16,3 @@ uvicorn==0.25.0
 pytest==7.4.4
 loguru==0.7.2
 python-dotenv==1.0.0
-# rocm-smi==4.3.0
