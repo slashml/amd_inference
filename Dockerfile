@@ -1,32 +1,37 @@
-# Start from the ROCm base image
-FROM rocm/rocm-terminal:5.4.2
+# Start from the latest ROCm base image
+FROM rocm/dev-ubuntu-22.04:6.0-complete
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
-ENV PATH="/opt/rocm/bin:${PATH}"
-
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    python3-pip \
-    python3-dev \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory in the container
-WORKDIR /app
+# Set up a new user
+RUN useradd -m -s /bin/bash user
+USER user
+WORKDIR /home/user/app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+# Set up Python environment
+ENV PATH="/home/user/.local/bin:${PATH}"
+RUN python3 -m pip install --user --upgrade pip
 
-# Install Python dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
+COPY --chown=user:user requirements.txt .
+
+# Switch to root user
+USER root
+
+# Install rocm-smi
+RUN apt-get update && apt-get install -y rocm-smi
+
+# Switch back to the non-root user
+USER user
+
+
+RUN pip install --user --no-cache-dir -r requirements.txt
 
 # Copy the application code
-COPY src /app/src
-COPY examples /app/examples
-
-# Create a directory for the model
-RUN mkdir -p /app/models
+COPY --chown=user:user . /home/user/app/
 
 # Set an argument for the model path
 ARG MODEL_PATH
@@ -34,4 +39,3 @@ ENV MODEL_PATH=${MODEL_PATH}
 
 # Set the entry point to run the inference script
 ENTRYPOINT ["python3", "src/run_inference.py"]
-
