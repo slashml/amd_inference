@@ -1,7 +1,7 @@
---extra-index-url https://download.pytorch.org/whl/rocm6.2
-torch==2.2.0+rocm6.2
-torchvision==0.17.0+rocm6.2
-torchaudio==2.2.0+rocm6.2
+--extra-index-url https://download.pytorch.org/whl/rocm6.1
+torch==2.4.0+rocm6.1
+torchvision==0.19.0+rocm6.1
+torchaudio==2.4.0+rocm6.1
 transformers==4.37.2
 numpy==1.26.3
 pandas==2.1.4
@@ -16,4 +16,3 @@ uvicorn==0.25.0
 pytest==7.4.4
 loguru==0.7.2
 python-dotenv==1.0.0
-rocm-smi==4.3.0
